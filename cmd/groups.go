@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/TylerBrock/saw/blade"
 	"github.com/TylerBrock/saw/config"
@@ -20,6 +21,7 @@ var groupsCommand = &cobra.Command{
 		logGroups, err := b.GetLogGroups()
 		if err != nil {
 			fmt.Println("Error", err)
+			os.Exit(1)
 		}
 		for _, group := range logGroups {
 			fmt.Println(*group.LogGroupName)
